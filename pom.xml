@@ -8,7 +8,7 @@
         <relativePath />
     </parent>
 
-    <groupId>com.github.skwakman.nodejs-maven-binaries</groupId>
+    <groupId>com.github.skwakman</groupId>
     <artifactId>nodejs-maven-binaries</artifactId>
     <version>0.8.21-SNAPSHOT</version>
     <packaging>pom</packaging>
