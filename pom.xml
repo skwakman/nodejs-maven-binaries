@@ -10,7 +10,7 @@
 
     <groupId>com.github.skwakman.nodejs-maven-binaries</groupId>
     <artifactId>nodejs-maven-binaries</artifactId>
-    <version>0.10.17</version>
+    <version>0.10.17-1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>nodejs-maven-binaries</name>
