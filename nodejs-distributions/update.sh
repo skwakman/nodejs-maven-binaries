@@ -76,10 +76,12 @@ appendNpmToWindowsDirs() {
 
   for windowsDistDir in "$@"
   do
-    echo "creating node+NPM distributions in for $windowsDistDir"
+    echo "creating node+NPM distributions for $windowsDistDir"
     unzip -qo npm.zip -d $windowsDistDir/bin || error_exit "Could not extract downloaded NPM zip to $windowsDistDir"
     # create gzip file
-    tar -pczf nodejs.tar.gz $windowsDistDir || error_exit "Could not create tar.gz for $windowsDistDir"
+    cd $windowsDistDir
+    tar -pczf ../nodejs.tar.gz * || error_exit "Could not create tar.gz for $windowsDistDir"
+    cd ..
     rm -Rf $windowsDistDir/* || error_exit "Could not empty $windowsDistDir"
     cp nodejs.tar.gz $windowsDistDir || error_exit "Could not copy generated nodejs dist to $windowsDistDir"
     rm nodejs.tar.gz || error_exit "Could not clean up generated nodejs.tar.gz for $windowsDistDir"
