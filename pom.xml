@@ -49,50 +49,27 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.8</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/linux-x64.xml</descriptor>
+                        <descriptor>src/main/assembly/linux-x86.xml</descriptor>
+                        <descriptor>src/main/assembly/macos-x64.xml</descriptor>
+                        <descriptor>src/main/assembly/macos-x86.xml</descriptor>
+                        <descriptor>src/main/assembly/win-x64.xml</descriptor>
+                        <descriptor>src/main/assembly/win-x86.xml</descriptor>
+                    </descriptors>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>attach-artifacts</id>
+                        <id>make-assembly</id>
+                        <!-- this is used for inheritance merges -->
                         <phase>package</phase>
+                        <!-- bind to the packaging phase -->
                         <goals>
-                            <goal>attach-artifact</goal>
+                            <goal>single</goal>
                         </goals>
-                        <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>nodejs-distributions/linux-x64/nodejs.tar.gz</file>
-                                    <type>tar.gz</type>
-                                    <classifier>linux-x64</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>nodejs-distributions/linux-x86/nodejs.tar.gz</file>
-                                    <type>tar.gz</type>
-                                    <classifier>linux-x86</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>nodejs-distributions/macos-x64/nodejs.tar.gz</file>
-                                    <type>tar.gz</type>
-                                    <classifier>macos-x64</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>nodejs-distributions/macos-x86/nodejs.tar.gz</file>
-                                    <type>tar.gz</type>
-                                    <classifier>macos-x86</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>nodejs-distributions/win-x64/nodejs.tar.gz</file>
-                                    <type>tar.gz</type>
-                                    <classifier>win-x64</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>nodejs-distributions/win-x86/nodejs.tar.gz</file>
-                                    <type>tar.gz</type>
-                                    <classifier>win-x86</classifier>
-                                </artifact>
-                            </artifacts>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
